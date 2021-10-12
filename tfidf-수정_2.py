@@ -50,11 +50,11 @@ def get_recommendations(a, title, df):
 def show_ingredients(my, menu):
     tmp = []
     for m in menu:
-        intersect_ingre = list(set(my).intersection(m))
+        intersect_ingre = ','.join(list(set(my).intersection(m)))
         if len(intersect_ingre) == 0:
-            tmp.append(['--겹치는 재료 없음--'])
-        
-        tmp.append(intersect_ingre)
+            tmp.append('--겹치는 재료 없음--')
+        else:
+            tmp.append(intersect_ingre)
     
     intersects = pd.Series(tmp, name = '겹치는 재료')
     return intersects
