@@ -24,7 +24,7 @@ row3_spacer1, row3_1, row3_spacer2, row3_2, row3_spacer3 = st.columns(
     (.4, 1.6, .1, 1.6, .1)
     )
 # load data
-path = 'data\\db\\recipe_final.xlsx'
+path = './data/db/recipe_final.xlsx'
 df = pd.read_excel(path)
 
 # tf-idf
