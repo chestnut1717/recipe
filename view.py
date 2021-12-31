@@ -1,6 +1,8 @@
 from os import name
 from recipe_recom import *
+import show_expiration
 import streamlit as st
+
 
 
 
@@ -15,14 +17,19 @@ def show_page():
     
     # row1.config
     row1_spacer1, row1_2, row1_spacer2 = st.columns(
-        (3,4,3)
+        (2,3,2)
         )
 
     # row2.config
     row2_spacer1, row2_1, row2_spacer2, row2_2, row2_spacer3,row2_3 = st.columns(
-        (.4, 1.6, .1, 1.6, .1, .4)
+        (.2, 1.3, .1, 1.3, .1, .2)
         )
 
+    # row3.config
+    row3_spacer1, row3_1, row2_spacer2, row3_2, row3_spacer3,row3_3 = st.columns(
+        (.2, 1.3, .1, 1.3, .1, .2)
+        )
+    
     # 상세설정
     with row1_2:
         st.write("""# 👩‍🍳리사야 냉장고를 부탁해""")
@@ -57,6 +64,23 @@ def show_page():
         recipe_url = output_df[output_df['이름'] == name].iloc[0, -3]
         st.write("조리법 주소")
         st.write(recipe_url)
+    
+    with row3_2:
+        ## 웹 페이지에 영수증 등록
+        new_exp = show_expiration.upload_credit()
+        new_exp
+
+        ## 유통기한 경고 문구 출력
+        show_exp = show_expiration.button2()
+        show_exp
+
+        ##기본 버튼
+        back_button = show_expiration.button3()
+        back_button
+
+
 
 if __name__ == "__main__":
     show_page()
+
+
